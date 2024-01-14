@@ -10,23 +10,13 @@ fetch(api)
         return response.json();
     })
     .then((pokemon) => {
-        // Récupération des éléments HTML où afficher les détails du Pokémon
         const namePokemon = document.querySelector(".pokemon__name");
         const IdPokemon = document.querySelector(".pokemon__id");
         const imagePokemon = document.querySelector(".pokemon__image");
-        // Récupération des éléments HTML où afficher les détails de taille, poids, generation, type et talent du pokemon
-        const heightPokemon = document.querySelector(
-            ".pokemon__height"
-        );
-        const weightPokemon = document.querySelector(
-            ".pokemon__weight"
-        );
-        const typePokemon = document.querySelector(
-            ".pokemon__type"
-        );
-        const abilityPokemon = document.querySelector(
-            ".pokemon__ability"
-        );
+        const heightPokemon = document.querySelector(".pokemon__height");
+        const weightPokemon = document.querySelector(".pokemon__weight");
+        const typePokemon = document.querySelector(".pokemon__type");
+        const abilityPokemon = document.querySelector(".pokemon__ability");
 
         // Remplissage des éléments avec les détails du Pokémon
         namePokemon.textContent = pokemon.name;
@@ -35,12 +25,15 @@ fetch(api)
         imagePokemon.alt = pokemon.name;
         heightPokemon.textContent = "Taille : " + pokemon.height / 10 + " m";
         weightPokemon.textContent = "Poids : " + pokemon.weight / 10 + " kg";
-        // generationPokemon.textContent = "Génération : " + pokemon.order;
-        typePokemon.textContent =
-            "Type : " +
-            pokemon.types[0].type.name +
-            ", " +
-            pokemon.types[1].type.name;
+        if (pokemon.types.length === 1) {
+            typePokemon.textContent = "Type : " + pokemon.types[0].type.name;
+        } else {
+            typePokemon.textContent =
+                "Type : " +
+                pokemon.types[0].type.name +
+                ", " +
+                pokemon.types[1].type.name;
+        }
         abilityPokemon.textContent =
             "Talent : " + pokemon.abilities[0].ability.name;
 
@@ -70,10 +63,33 @@ fetch(api)
     })
     .then((region) => {
         // Récupération de l'élément HTML où afficher la région du Pokémon
-        const regionPokemon = document.querySelector(
-            ".pokemon__region"
-        );
+        const regionPokemon = document.querySelector(".pokemon__region");
 
         // Remplissage de l'élément avec la région du Pokémon
         regionPokemon.textContent = "Région : " + region.main_region.name;
     });
+
+const pokemonBtn = document.querySelector(".pokemon__button");
+let PokemonCartId = localStorage.getItem("pokemonCartId");
+let cart = JSON.parse(PokemonCartId) || [];
+
+updateCartCounter = () => {
+    let cartCounter = document.querySelector(".cart__counter");
+
+    // Mise à jour du compteur du panier s'il est supérieur à 0
+    if (cart.length > 0) {
+        cartCounter.textContent = cart.length;
+        cartCounter.style.display = "flex";
+    } else {
+        cartCounter.style.display = "none";
+    }
+};
+
+updateCartCounter();
+
+pokemonBtn.addEventListener("click", () => {
+    cart.push(pokemonId);
+    localStorage.setItem("pokemonCartId", JSON.stringify(cart));
+
+    updateCartCounter();
+});

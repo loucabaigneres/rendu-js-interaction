@@ -16,34 +16,34 @@
                     class="logo"
                 />
             </a>
-            <a href="cart.html">
-                <img src="assets/icon_cart.svg" alt="Panier" class="icon" />
+            <a class="cart" href="cart.html">
+                <img
+                    src="assets/icon_cart.png"
+                    alt="Panier"
+                    class="cart__icon"
+                />
+                <span class="cart__counter"></span>
             </a>
         </header>
         <main>
             <h1 class="title">Votre Pokémon de rêve vous attend</h1>
-            <section class="container">
-                <article class="card">
-                    <h2 class="card__title">Pikachu</h2>
-                    <img
-                        src="assets/pikachu.png"
-                        alt="Pikachu"
-                        class="card__image"
-                    />
-                    <button class="card__button">Ajouter à l'équipe</button>
-                </article>
-            </section>
+            <section class="container"></section>
         </main>
 
         <footer>
-            <p>
-                Made with ❤️ by
+            <div>
+                <p>Made with ❤️ by</p>
                 <a href="https://github.com/loucabaigneres">
                     <img src="assets/icon_github.svg" alt="" width="24px" />
                 </a>
+            </div>
+            <p>
+                Icons by
+                <a href="https://icones8.fr/"> icon8 </a>
             </p>
         </footer>
 
-        <script src="js/script.js"></script>
+        <script src="js/cards.js"></script>
+        <script src="js/cart-counter.js"></script>
     </body>
 </html>

@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap");
 * {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 body {
@@ -13,18 +13,18 @@ a {
 }
 
 h1 {
-  font-size: 3em;
-  font-weight: 500;
+  font-size: 2.5em;
+  font-weight: 600;
 }
 @media screen and (max-width: 768px) {
   h1 {
-    font-size: 4em;
+    font-size: 2em;
   }
 }
 
 h2 {
-  font-size: 2.2em;
-  font-weight: 600;
+  font-size: 1.5em;
+  font-weight: 400;
 }
 @media screen and (max-width: 768px) {
   h2 {
@@ -56,6 +56,10 @@ p {
   font-weight: 400;
 }
 
+button {
+  font-size: 1em;
+}
+
 *,
 ::before,
 ::after {
@@ -78,6 +82,12 @@ body {
   height: 100vh;
   overflow: hidden;
 }
+@media (max-width: 768px) {
+  .body__limited {
+    height: auto;
+    overflow: scroll;
+  }
+}
 
 header {
   position: fixed;
@@ -88,39 +98,93 @@ header {
   justify-content: space-between;
   align-items: center;
   padding-inline: 48px;
+  background-color: rgba(19, 18, 20, 0.5);
+  backdrop-filter: blur(4px);
 }
 header .logo {
   height: 50px;
 }
-header .icon {
-  height: 24px;
+header .cart {
+  position: relative;
+  height: 36px;
+}
+header .cart__icon {
+  height: 100%;
   filter: invert(1);
+}
+header .cart__counter {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 16px;
+  height: 16px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
 }
 
 main {
-  margin-top: 100px;
+  margin-top: 112px;
   width: 100%;
-  height: calc(100vh - 100px);
   padding: 0 48px 48px 48px;
 }
 main .title {
-  font-size: 48px;
-  font-weight: 700;
   margin-bottom: 24px;
 }
 main .container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+@media (max-width: 1200px) {
+  main .container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 900px) {
+  main .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  main .container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.main__limited {
+  width: 100vw;
+  height: calc(100vh - 100px);
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+  .main__limited {
+    height: auto;
+    overflow: scroll;
+  }
+}
+
+footer {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 8px;
 }
 
 button {
   width: 100%;
   border-radius: 8px;
-  padding: 8px;
+  padding: 8px 12px;
   cursor: pointer;
   border: none;
   outline: none;
+  transition: 0.5s background-color;
 }
 
 .card {
@@ -137,38 +201,56 @@ button {
 .card__image {
   width: 100px;
   height: 100px;
+  image-rendering: pixelated;
+  transition: 0.5s;
 }
 .card__title {
-  font-size: 24px;
-  font-weight: 700;
   text-align: center;
-}
-
-.main__pokemon {
-  width: 100vw;
-  height: 100vh;
 }
 
 .pokemon {
   width: 100%;
   height: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 3fr 2fr;
+}
+@media (max-width: 768px) {
+  .pokemon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
 }
 .pokemon__left {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 8px;
 }
+@media (max-width: 768px) {
+  .pokemon__left {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+  }
+}
 .pokemon__left .pokemon__region {
-  margin-top: auto;
-  transform: rotate(-90deg) translateY(36px);
-  transform-origin: 0 100%;
+  white-space: nowrap;
+}
+@media (min-width: 769px) {
+  .pokemon__left .pokemon__region {
+    transform: rotate(-90deg) translateY(100%);
+    transform-origin: 0 100%;
+  }
 }
 .pokemon__center {
   width: 100%;
 }
 .pokemon__center .pokemon__image {
   width: 350px;
+  image-rendering: pixelated;
 }
 .pokemon__right {
   display: flex;
@@ -206,6 +288,94 @@ button {
 .pokemon__right .list__item span {
   white-space: nowrap;
   color: black;
+}
+
+.cart__card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  margin-bottom: 16px;
+}
+@media (max-width: 768px) {
+  .cart__card {
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+  }
+}
+.cart__card div {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+@media (max-width: 768px) {
+  .cart__card div {
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+.cart__card div img {
+  image-rendering: pixelated;
+}
+.cart__card button {
+  white-space: nowrap;
+}
+@media (max-width: 768px) {
+  .cart__card button {
+    width: 60%;
+  }
+}
+
+@keyframes bounce {
+  from, 20%, 53%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+  }
+  40%, 43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -30px, 0) scaleY(1.1);
+  }
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -15px, 0) scaleY(1.05);
+  }
+  80% {
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0) scaleY(0.95);
+  }
+  90% {
+    transform: translate3d(0, -4px, 0) scaleY(1.02);
+  }
+}
+.bounce {
+  animation-name: bounce;
+  transform-origin: center bottom;
+  animation-duration: 0.8s;
+}
+
+.zoom {
+  transform: scale(1.2);
+}
+
+.card {
+  opacity: 0;
+}
+
+@keyframes fadeInUpBig {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 2000px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.fadeInUpBig {
+  animation-name: fadeInUpBig;
+  animation-duration: 0.5s;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -16,16 +16,22 @@
                     class="logo"
                 />
             </a>
-            <a href="cart.html">
-                <img src="assets/icon_cart.svg" alt="Panier" class="icon" />
+            <a class="cart" href="cart.html">
+                <img
+                    src="assets/icon_cart.png"
+                    alt="Panier"
+                    class="cart__icon"
+                />
+                <span class="cart__counter"></span>
             </a>
         </header>
-        <main>
+        <main class="main__limited">
             <div class="pokemon">
-                <!-- Nom, id, images, generation, type, taille, poids, talent, sexe, évolutions ?, talent / capacités ?, ... -->
                 <div class="pokemon__left">
-                    <h4 class="pokemon__id"></h4>
-                    <h2 class="pokemon__name"></h2>
+                    <div class="name-container">
+                        <h4 class="pokemon__id"></h4>
+                        <h2 class="pokemon__name"></h2>
+                    </div>
                     <h5 class="pokemon__region"></h5>
                 </div>
                 <div class="pokemon__center">
@@ -54,6 +60,8 @@
                 </div>
             </div>
         </main>
+
         <script src="js/pokemon.js"></script>
+        <script src="js/cart-counter.js"></script>
     </body>
 </html>
