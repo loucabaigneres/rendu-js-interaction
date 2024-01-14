@@ -16,6 +16,7 @@
                     class="logo"
                 />
             </a>
+            <input type="text" id="search" placeholder="Chercher un Pokémon" />
             <a class="cart" href="cart.html">
                 <img
                     src="assets/icon_cart.png"
@@ -26,7 +27,13 @@
             </a>
         </header>
         <main>
-            <h1 class="title">Votre Pokémon de rêve vous attend</h1>
+            <div class="main__top">
+                <h1 class="title">Votre Pokémon de rêve vous attend</h1>
+                <select id="filter">
+                    <option value="">Tous les types</option>
+                    <!-- Les autres options seront générées en JavaScript -->
+                </select>
+            </div>
             <section class="container"></section>
         </main>
 
@@ -37,13 +44,12 @@
                     <img src="assets/icon_github.svg" alt="" width="24px" />
                 </a>
             </div>
-            <p>
-                Icons by
-                <a href="https://icones8.fr/"> icon8 </a>
-            </p>
+            <p>Icons by <a href="https://icones8.fr/"> Icons8 </a></p>
         </footer>
 
         <script src="js/cards.js"></script>
         <script src="js/cart-counter.js"></script>
+        <script src="js/search.js"></script>
+        <script src="js/filter.js"></script>
     </body>
 </html>

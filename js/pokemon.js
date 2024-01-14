@@ -13,6 +13,10 @@ fetch(api)
         const namePokemon = document.querySelector(".pokemon__name");
         const IdPokemon = document.querySelector(".pokemon__id");
         const imagePokemon = document.querySelector(".pokemon__image");
+        const backDefaultImage = document.querySelector(".back_default");
+        const frontShinyImage = document.querySelector(".front_shiny");
+        const backShinyImage = document.querySelector(".back_shiny");
+
         const heightPokemon = document.querySelector(".pokemon__height");
         const weightPokemon = document.querySelector(".pokemon__weight");
         const typePokemon = document.querySelector(".pokemon__type");
@@ -22,7 +26,13 @@ fetch(api)
         namePokemon.textContent = pokemon.name;
         IdPokemon.textContent = "#" + pokemon.id;
         imagePokemon.src = pokemon.sprites.front_default;
-        imagePokemon.alt = pokemon.name;
+        imagePokemon.alt = pokemon.name + "Front Default";
+        backDefaultImage.src = pokemon.sprites.back_default;
+        backDefaultImage.alt = pokemon.name + " Back Default";
+        frontShinyImage.src = pokemon.sprites.front_shiny;
+        backDefaultImage.alt = pokemon.name + " Front Shiny";
+        backShinyImage.src = pokemon.sprites.back_shiny;
+        backDefaultImage.alt = pokemon.name + " Back Shiny";
         heightPokemon.textContent = "Taille : " + pokemon.height / 10 + " m";
         weightPokemon.textContent = "Poids : " + pokemon.weight / 10 + " kg";
         if (pokemon.types.length === 1) {

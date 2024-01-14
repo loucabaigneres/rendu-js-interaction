@@ -1,4 +1,4 @@
-let cartDisplay = () => {
+cartDisplay = () => {
     // Récupération des ID des Pokémon du localStorage
     let PokemonCartId = localStorage.getItem("pokemonCartId");
     let cart = JSON.parse(PokemonCartId) || [];
@@ -48,12 +48,6 @@ let cartDisplay = () => {
                         cartCounter.style.display = "flex";
                     } else {
                         cartCounter.style.display = "none";
-
-                        // Display "Panier vide" message
-                        const emptyCartMessage = document.createElement("p");
-                        emptyCartMessage.textContent = "Panier vide";
-                        const main = document.querySelector("main");
-                        main.appendChild(emptyCartMessage);
                     }
                 });
 
@@ -83,7 +77,7 @@ let cartDisplay = () => {
 
     // Create Clear All button
     const clearAllButton = document.createElement("button");
-    clearAllButton.textContent = "Vider le panier";
+    clearAllButton.textContent = "Clear All";
 
     const mainTop = document.querySelector(".main__top");
     mainTop.appendChild(clearAllButton);
@@ -106,20 +100,7 @@ let cartDisplay = () => {
         // Update cartCounter
         cartCounter.textContent = "";
         cartCounter.style.display = "none";
-
-        // Display "Panier vide" message
-        const emptyCartMessage = document.createElement("p");
-        emptyCartMessage.textContent = "Panier vide";
-        main.appendChild(emptyCartMessage);
     });
-
-    // Display "Panier vide" message if cart is empty
-    if (cart.length === 0) {
-        const emptyCartMessage = document.createElement("p");
-        emptyCartMessage.textContent = "Panier vide";
-        const main = document.querySelector("main");
-        main.appendChild(emptyCartMessage);
-    }
 };
 
 cartDisplay();

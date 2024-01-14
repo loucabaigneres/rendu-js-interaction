@@ -1,4 +1,4 @@
-const api = "https://pokeapi.co/api/v2/pokemon?limit=1302";
+const api = "https://pokeapi.co/api/v2/pokemon?limit=13";
 
 const container = document.querySelector(".container");
 
@@ -22,7 +22,15 @@ createPokemonCard = (pokemon, index) => {
         .then((data) => {
             const card = document.createElement("article");
             card.classList.add("card");
+
+            card.dataset.name = data.name;
+
             card.dataset.id = data.id;
+
+            const pokemonTypes = data.types.map(
+                (typeInfo) => typeInfo.type.name
+            );
+            card.dataset.type = pokemonTypes.join(",");
 
             const cardTitle = document.createElement("h2");
             cardTitle.classList.add("card__title");
@@ -50,14 +58,24 @@ createPokemonCard = (pokemon, index) => {
 
             container.appendChild(card);
 
+            // Animation d'apparition des cartes
             card.classList.add("fadeInUpBig");
             card.style.animationDelay = `${index * 0.1}s`;
             setTimeout(() => {
                 card.style.opacity = 1;
             }, 500);
+
+            // Zoom de l'image quand je passe sur la carte
+            card.addEventListener("mouseover", () => {
+                cardImg.classList.add("zoom");
+            });
+            card.addEventListener("mouseout", () => {
+                cardImg.classList.remove("zoom");
+            });
         });
 };
 
+// Redirection vers la page pokemon.html
 container.addEventListener("click", (e) => {
     const card = e.target.closest(".card");
     const btn = e.target.closest(".card__button");
@@ -66,16 +84,4 @@ container.addEventListener("click", (e) => {
         localStorage.setItem("pokemonId", id);
         window.location.href = "pokemon.html";
     }
-});
-
-// Zoom de l'image quand je passe sur la carte
-container.addEventListener("mouseover", (e) => {
-    const card = e.target.closest(".card");
-    const img = card.querySelector(".card__image");
-    img.classList.add("zoom");
-});
-container.addEventListener("mouseout", (e) => {
-    const card = e.target.closest(".card");
-    const img = card.querySelector(".card__image");
-    img.classList.remove("zoom");
 });
