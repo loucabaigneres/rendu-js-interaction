@@ -1,4 +1,4 @@
-const api = "https://pokeapi.co/api/v2/pokemon?limit=13";
+const api = "https://pokeapi.co/api/v2/pokemon?limit=1302";
 
 const container = document.querySelector(".container");
 
