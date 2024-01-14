@@ -1,0 +1,158 @@
+@import "base/typography";
+@import "base/reset";
+
+body {
+    width: 100vw;
+    height: 100%;
+    color: white;
+    background-color: #2b2a33;
+}
+
+.body__limited {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 48px;
+
+    .logo {
+        height: 50px;
+    }
+
+    .icon {
+        height: 24px;
+        filter: invert(1);
+    }
+}
+
+main {
+    margin-top: 100px;
+    width: 100%;
+    height: calc(100vh - 100px);
+    padding: 0 48px 48px 48px;
+
+    .title {
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 24px;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+}
+
+button {
+    width: 100%;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #855757;
+    border-radius: 8px;
+    padding: 16px;
+    cursor: pointer;
+
+    &__image {
+        width: 100px;
+        height: 100px;
+    }
+
+    &__title {
+        font-size: 24px;
+        font-weight: 700;
+        text-align: center;
+    }
+}
+
+.main__pokemon {
+    width: 100vw;
+    height: 100vh;
+}
+
+.pokemon {
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    &__left {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .pokemon__region {
+            margin-top: auto;
+            transform: rotate(-90deg) translateY(36px);
+            transform-origin: 0 100%;
+        }
+    }
+    &__center {
+        width: 100%;
+        .pokemon__image {
+            width: 350px;
+        }
+    }
+
+    &__right {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+
+        h3 {
+            white-space: nowrap;
+        }
+
+        .list {
+            position: relative;
+            padding-left: 24px;
+
+            &::before {
+                content: "";
+                display: block;
+                width: 4px;
+                top: 0;
+                left: 0;
+                bottom: 16px;
+                background-color: rgba(255, 255, 255, 0.35);
+                position: absolute;
+                border-radius: 2px;
+            }
+
+            &__item {
+                display: inline-block;
+                background-color: white;
+                padding: 8px 12px;
+                border-radius: 8px;
+                margin-right: 8px;
+                margin-bottom: 16px;
+                box-shadow: 0 20px 25px -10px rgba(0, 0, 0, 0.15);
+
+                span {
+                    white-space: nowrap;
+                    color: black;
+                }
+            }
+        }
+    }
+}

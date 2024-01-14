@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Product Page</title>
+
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body class="body__limited">
+        <header>
+            <a href="index.html">
+                <img
+                    src="assets/logo_pokemon.svg"
+                    alt="Logo Pokémon"
+                    class="logo"
+                />
+            </a>
+            <a href="cart.html">
+                <img src="assets/icon_cart.svg" alt="Panier" class="icon" />
+            </a>
+        </header>
+        <main>
+            <div class="pokemon">
+                <!-- Nom, id, images, generation, type, taille, poids, talent, sexe, évolutions ?, talent / capacités ?, ... -->
+                <div class="pokemon__left">
+                    <h4 class="pokemon__id"></h4>
+                    <h2 class="pokemon__name"></h2>
+                    <h5 class="pokemon__region"></h5>
+                </div>
+                <div class="pokemon__center">
+                    <img src="" alt="" class="pokemon__image" />
+                </div>
+                <div class="pokemon__right">
+                    <h3>Informations :</h3>
+                    <ul class="list">
+                        <li class="list__item">
+                            <span class="pokemon__height"></span>
+                        </li>
+                        <li class="list__item">
+                            <span class="pokemon__weight"></span>
+                        </li>
+                        <li class="list__item">
+                            <span class="pokemon__generation"></span>
+                        </li>
+                        <li class="list__item">
+                            <span class="pokemon__type"></span>
+                        </li>
+                        <li class="list__item">
+                            <span class="pokemon__ability"></span>
+                        </li>
+                    </ul>
+                    <button class="pokemon__button">Ajouter à l'équipe</button>
+                </div>
+            </div>
+        </main>
+        <script src="js/pokemon.js"></script>
+    </body>
+</html>

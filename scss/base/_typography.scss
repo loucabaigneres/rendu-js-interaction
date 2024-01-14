@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap");
+
+* {
+    font-size: 18px;
+}
+
+$size: 1em;
+$font-family: "Nunito", sans-serif;
+
+body {
+    font-family: $font-family;
+    font-size: $size;
+}
+
+a {
+    color: white;
+}
+
+h1 {
+    font-size: calc($size * 3);
+    font-weight: 500;
+
+    @media screen and (max-width: 768px) {
+        font-size: calc($size * 4);
+    }
+}
+
+h2 {
+    font-size: calc($size * 2.2);
+    font-weight: 600;
+
+    @media screen and (max-width: 768px) {
+        font-size: calc($size * 1.8);
+    }
+}
+
+h3 {
+    font-size: calc($size * 2.5);
+    font-weight: 400;
+    font-style: italic;
+
+    @media screen and (max-width: 768px) {
+        font-size: calc($size * 1.7);
+    }
+}
+
+h4 {
+    font-size: calc($size * 1.5);
+    font-weight: 600;
+}
+
+h5 {
+    font-weight: 300;
+}
+
+p {
+    font-weight: 400;
+}
